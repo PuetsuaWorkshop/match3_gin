@@ -1,0 +1,34 @@
+[remap]
+
+importer="texture"
+type="StreamTexture"
+path="res://.import/Gem Type1 Yellow.png-7b4c9d6edde76e323c25b3a4dbca56ef.stex"
+metadata={
+"vram_texture": false
+}
+
+[deps]
+
+source_file="res://match3/sprites/Gem Type1 Yellow.png"
+dest_files=[ "res://.import/Gem Type1 Yellow.png-7b4c9d6edde76e323c25b3a4dbca56ef.stex" ]
+
+[params]
+
+compress/mode=0
+compress/lossy_quality=0.7
+compress/hdr_mode=0
+compress/bptc_ldr=0
+compress/normal_map=0
+flags/repeat=0
+flags/filter=true
+flags/mipmaps=false
+flags/anisotropic=false
+flags/srgb=2
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/HDR_as_SRGB=false
+process/invert_color=false
+stream=false
+size_limit=0
+detect_3d=true
+svg/scale=1.0

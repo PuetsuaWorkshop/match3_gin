@@ -1,0 +1,32 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://ui/sprites/grey_panel.png" type="Texture" id=2]
+
+[node name="Match3Game" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+input_pass_on_modal_close_click = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+modulate = Color( 0.254902, 0.521569, 0.47451, 0.501961 )
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = 50.0
+margin_top = -260.0
+margin_right = 850.0
+margin_bottom = 240.0
+grow_horizontal = 0
+grow_vertical = 0
+rect_pivot_offset = Vector2( 0.5, 0.5 )
+texture = ExtResource( 2 )
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+__meta__ = {
+"_edit_use_anchors_": false
+}
