@@ -1,18 +1,15 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=8 format=2]
 
+[ext_resource path="res://match3/match3.gd" type="Script" id=1]
 [ext_resource path="res://ui/sprites/grey_panel.png" type="Texture" id=2]
+[ext_resource path="res://match3/sprites/Gem Type1 Blue.png" type="Texture" id=3]
+[ext_resource path="res://match3/sprites/Gem Type2 Purple.png" type="Texture" id=4]
+[ext_resource path="res://match3/sprites/Gem Type4 Green.png" type="Texture" id=5]
+[ext_resource path="res://match3/sprites/Gem Type3 Red.png" type="Texture" id=6]
+[ext_resource path="res://match3/field.gd" type="Script" id=7]
 
-[node name="Match3Game" type="Control"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-mouse_filter = 2
-input_pass_on_modal_close_click = false
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="NinePatchRect" type="NinePatchRect" parent="."]
-modulate = Color( 0.254902, 0.521569, 0.47451, 0.501961 )
+[node name="Match3" type="NinePatchRect"]
+self_modulate = Color( 0.298039, 0.45098, 0.403922, 0.8 )
 anchor_top = 0.5
 anchor_bottom = 0.5
 margin_left = 50.0
@@ -27,6 +24,80 @@ patch_margin_left = 10
 patch_margin_top = 10
 patch_margin_right = 10
 patch_margin_bottom = 10
+script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Gem1" type="TextureRect" parent="."]
+margin_left = 347.5
+margin_top = 197.5
+margin_right = 397.5
+margin_bottom = 247.5
+rect_min_size = Vector2( 50, 50 )
+rect_pivot_offset = Vector2( 25, 25 )
+texture = ExtResource( 3 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_editor_description_": "gem"
+}
+
+[node name="Gem2" type="TextureRect" parent="."]
+margin_left = 402.5
+margin_top = 197.5
+margin_right = 452.5
+margin_bottom = 247.5
+rect_min_size = Vector2( 50, 50 )
+rect_pivot_offset = Vector2( 25, 25 )
+texture = ExtResource( 5 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": "gem"
+}
+
+[node name="Gem3" type="TextureRect" parent="."]
+margin_left = 347.5
+margin_top = 252.5
+margin_right = 397.5
+margin_bottom = 302.5
+rect_min_size = Vector2( 50, 50 )
+rect_pivot_offset = Vector2( 25, 25 )
+texture = ExtResource( 6 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_editor_description_": "gem"
+}
+
+[node name="Gem4" type="TextureRect" parent="."]
+margin_left = 402.5
+margin_top = 252.5
+margin_right = 452.5
+margin_bottom = 302.5
+rect_min_size = Vector2( 50, 50 )
+rect_pivot_offset = Vector2( 25, 25 )
+texture = ExtResource( 4 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": "gem"
+}
+
+[node name="Field" type="Container" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_pivot_offset = Vector2( 400, 0 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+columns = 2
+alignment = 4

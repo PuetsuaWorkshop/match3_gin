@@ -95,13 +95,8 @@ acceleration = 1.0
 message = "This is my game playing the lol games. [b]test![/b]"
 autoscroll = false
 
-[node name="Match3Game" parent="." instance=ExtResource( 2 )]
-visible = false
-margin_left = 1.33484
-margin_top = -0.749146
-margin_right = 1.33484
-margin_bottom = -0.749146
+[node name="Match3" parent="." instance=ExtResource( 2 )]
 
 [connection signal="dialogue_done" from="Background/DialogueBox" to="." method="_on_DialogueBox_dialogue_done"]
-[connection signal="message_done" from="Background/DialogueBox/MessageBox" to="Background/DialogueBox" method="_on_MessageBox_message_done"]
 [connection signal="message_done" from="Background/DialogueBox/MessageBox" to="." method="_on_MessageBox_message_done"]
+[connection signal="message_done" from="Background/DialogueBox/MessageBox" to="Background/DialogueBox" method="_on_MessageBox_message_done"]
