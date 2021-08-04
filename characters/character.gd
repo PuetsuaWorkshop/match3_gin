@@ -13,7 +13,7 @@ signal on_animation_peak
 
 
 func change_sprite(expression):
-	var path = "res://characters/{0}_{1}.png".format([character_name, _expression])
+	var path = "res://characters/{0}_{1}.png".format([character_name, expression])
 	_new_texture = load(path)
 	
 	if _process != null:
@@ -22,7 +22,7 @@ func change_sprite(expression):
 
 
 func _ready():
-	pass # Replace with function body.
+	self.texture = load("res://characters/{0}_{1}.png".format([character_name, _expression]))
 
 
 func _change_sprite_process():

@@ -1,6 +1,7 @@
 ## Godot ##
 
 *.gd text
+*.godot text
 *.tscn text
 *.tres text
 *.import text

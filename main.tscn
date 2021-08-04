@@ -102,4 +102,6 @@ margin_top = -0.749146
 margin_right = 1.33484
 margin_bottom = -0.749146
 
+[connection signal="dialogue_done" from="Background/DialogueBox" to="." method="_on_DialogueBox_dialogue_done"]
+[connection signal="message_done" from="Background/DialogueBox/MessageBox" to="Background/DialogueBox" method="_on_MessageBox_message_done"]
 [connection signal="message_done" from="Background/DialogueBox/MessageBox" to="." method="_on_MessageBox_message_done"]

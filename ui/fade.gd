@@ -3,7 +3,7 @@ extends Node
 export var fade_time : float = 0.2
 
 onready var ui : Control = get_parent()
-onready var tween : Tween = get_node("Node/Tween")
+onready var tween : Tween = $Tween
 
 
 func fade_show():

@@ -26,6 +26,10 @@ window/stretch/aspect="keep"
 
 enabled=PoolStringArray( "res://addons/messagebox/plugin.cfg" )
 
+[gdnative]
+
+singletons=[  ]
+
 [locale]
 
 translations=PoolStringArray( "res://ui/en-US.tres", "res://ui/zh-TW.tres" )
