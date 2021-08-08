@@ -13,6 +13,7 @@ var talk_queue = []
 var dialog_ready = true
 var target_score : int = 3200
 var current_score : int = 0
+var target_reached : bool = false
 var last_score : int = 0
 var max_move_count = 15
 var move_count = 0
@@ -53,6 +54,7 @@ func _ready():
 	match3.generate_field()
 	_update_info()
 	rng.randomize()
+	target_reached = false
 	
 	music_player.play()
 
@@ -68,7 +70,7 @@ func _process(delta):
 	if talk_timer > 20.0:
 		var rand = rng.randi_range(0, 4)
 		if rand == 0:
-			_talk("You haven't been moving for a while, are you still there?", "confused")
+			_talk("Haven't got any progress yet? You can actually move the gem even when they don't make a match.", "confused")
 		elif rand == 1:
 			_talk("I guess you might be curious about where I am. I'm in a coffee shop!", "talk")
 		elif rand == 2:
@@ -109,20 +111,24 @@ func _on_Match3_scored(score):
 	
 	if talk_queue.size() > 5:
 		talk_queue.clear()
-		_talk("Wait. You're already playing? Well, I don't think I need to explain this game neither. It's just a typical match-3 game.", "annoyed")
-	elif last_score > 1000:
-		_talk("Over 1000 in one move? Now that's a strategic move.", "talk")
-	elif last_score > 700:
-		_talk("Over 700! I don't have that luck to score that much in one move.", "talk")
-	elif last_score > 500:
-		_talk("Nice move!", "talk")
+		_talk("Wait. You're already playing? Well, I don't want to explain this game neither. It's just a typical match-3 game anyway.", "confused")
+	else:
+		if current_score > target_score and !target_reached:
+			target_reached = true
+			_talk("Hurray! You reached the target score! You can continue to play to get the score as high as possible.", "happy")
+		elif last_score > 1000:
+			_talk("Over 1000 in one move? Now that's a strategic move.", "talk")
+		elif last_score > 700:
+			_talk("Over 700! I don't have that luck to score that much in one move.", "talk")
+		elif last_score > 500:
+			_talk("Nice move!", "talk")
 	
 	if max_move_count - move_count <= 0:
 		if current_score >= target_score:
 			# win
 			target_score = pow(current_score, 0.98)
 			target_score = target_score - target_score % 100
-			_talk("Congratulation! You reached the target score!", "happy")
+			_talk("Congratulation! You reached the target score in this round! Let's try next target score.", "happy")
 		else:
 			# lose
 			_talk("That's fine! I know it's hard to reach that score at this point. You can try it again if you want!", "happy")
@@ -137,6 +143,7 @@ func _on_Match3_scored(score):
 		current_score = 0
 		last_score = 0
 		move_count = 0
+		target_reached = false
 		
 		_update_info()
 
