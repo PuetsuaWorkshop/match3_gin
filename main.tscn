@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://ui/cafe_bg.png" type="Texture" id=1]
 [ext_resource path="res://match3/match3.tscn" type="PackedScene" id=2]
@@ -10,6 +10,9 @@
 [ext_resource path="res://ui/fade.gd" type="Script" id=8]
 [ext_resource path="res://characters/ginpng.tscn" type="PackedScene" id=9]
 [ext_resource path="res://dialogue_box.gd" type="Script" id=10]
+[ext_resource path="res://ui/sprites/grey_panel.png" type="Texture" id=11]
+[ext_resource path="res://ui/audio/actionTrack.mp3" type="AudioStream" id=12]
+[ext_resource path="res://ui/audio/425663__camo1018__clapping.mp3" type="AudioStream" id=13]
 
 [node name="Node2D" type="Control"]
 anchor_right = 1.0
@@ -44,10 +47,12 @@ __meta__ = {
 }
 
 [node name="CheckButton" type="CheckButton" parent="Background/HBoxContainer"]
-margin_left = 1164.0
+margin_left = 1122.0
 margin_right = 1240.0
 margin_bottom = 60.0
 rect_pivot_offset = Vector2( 76, 0 )
+pressed = true
+text = "Music"
 
 [node name="GinPng" parent="Background" instance=ExtResource( 9 )]
 
@@ -95,8 +100,61 @@ acceleration = 1.0
 message = "This is my game playing the lol games. [b]test![/b]"
 autoscroll = false
 
-[node name="Match3" parent="." instance=ExtResource( 2 )]
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+self_modulate = Color( 0.298039, 0.45098, 0.403922, 0.8 )
+margin_left = 20.0
+margin_top = 20.0
+margin_right = 320.0
+margin_bottom = 80.0
+texture = ExtResource( 11 )
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
+[node name="RichTextLabel" type="RichTextLabel" parent="NinePatchRect"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 10.0
+margin_top = 10.0
+margin_right = -10.0
+margin_bottom = -10.0
+custom_fonts/normal_font = ExtResource( 6 )
+bbcode_enabled = true
+bbcode_text = "[color=lime]Score: 1000 / 2000[/color]
+Moves Remaing: 5"
+text = "Score: 1000 / 2000
+Moves Remaing: 5"
+
+[node name="Match3" parent="." instance=ExtResource( 2 )]
+rect_pivot_offset = Vector2( 815.924, 500 )
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Match3"]
+self_modulate = Color( 0.298039, 0.45098, 0.403922, 0.8 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 0
+texture = ExtResource( 11 )
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 12 )
+
+[node name="AudioPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 13 )
+
+[connection signal="toggled" from="Background/HBoxContainer/CheckButton" to="." method="_on_CheckButton_toggled"]
 [connection signal="dialogue_done" from="Background/DialogueBox" to="." method="_on_DialogueBox_dialogue_done"]
-[connection signal="message_done" from="Background/DialogueBox/MessageBox" to="." method="_on_MessageBox_message_done"]
 [connection signal="message_done" from="Background/DialogueBox/MessageBox" to="Background/DialogueBox" method="_on_MessageBox_message_done"]
+[connection signal="message_done" from="Background/DialogueBox/MessageBox" to="." method="_on_MessageBox_message_done"]
+[connection signal="moved_gem" from="Match3" to="." method="_on_Match3_moved_gem"]
+[connection signal="scored" from="Match3" to="." method="_on_Match3_scored"]

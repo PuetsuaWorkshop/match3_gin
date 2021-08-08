@@ -10,6 +10,8 @@ export(int,
 export(Vector2) var cell_size = Vector2(50, 50) setget _set_cell_size
 export(Vector2) var cell_spacing = Vector2(5, 5) setget _set_cell_spacing
 
+var disable_sort = false
+
 
 func _notification(what):
 	if what == NOTIFICATION_SORT_CHILDREN:
@@ -37,6 +39,9 @@ func _set_cell_spacing(value):
 
 
 func _sort():
+	if disable_sort:
+		return
+
 	var num_col = 0
 	var num_row = 0
 	var column_width = cell_size.x+cell_spacing.x

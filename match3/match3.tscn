@@ -1,12 +1,17 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=11 format=2]
 
-[ext_resource path="res://match3/match3.gd" type="Script" id=1]
+[ext_resource path="res://match3/scripts/match3.gd" type="Script" id=1]
 [ext_resource path="res://ui/sprites/grey_panel.png" type="Texture" id=2]
 [ext_resource path="res://match3/sprites/Gem Type1 Blue.png" type="Texture" id=3]
-[ext_resource path="res://match3/sprites/Gem Type2 Purple.png" type="Texture" id=4]
-[ext_resource path="res://match3/sprites/Gem Type4 Green.png" type="Texture" id=5]
-[ext_resource path="res://match3/sprites/Gem Type3 Red.png" type="Texture" id=6]
-[ext_resource path="res://match3/field.gd" type="Script" id=7]
+[ext_resource path="res://match3/sprites/Gem Type3 Purple.png" type="Texture" id=4]
+[ext_resource path="res://match3/sprites/Gem Type2 Green.png" type="Texture" id=5]
+[ext_resource path="res://match3/sprites/Gem Type4 Red.png" type="Texture" id=6]
+[ext_resource path="res://match3/scripts/field.gd" type="Script" id=7]
+[ext_resource path="res://match3/scripts/gem.gd" type="Script" id=8]
+[ext_resource path="res://match3/sprites/Gem Type1 Black.png" type="Texture" id=9]
+
+[sub_resource type="CanvasItemMaterial" id=1]
+blend_mode = 1
 
 [node name="Match3" type="NinePatchRect"]
 self_modulate = Color( 0.298039, 0.45098, 0.403922, 0.8 )
@@ -19,6 +24,7 @@ margin_bottom = 240.0
 grow_horizontal = 0
 grow_vertical = 0
 rect_pivot_offset = Vector2( 0.5, 0.5 )
+mouse_filter = 1
 texture = ExtResource( 2 )
 patch_margin_left = 10
 patch_margin_top = 10
@@ -28,6 +34,7 @@ script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+selected_material = SubResource( 1 )
 
 [node name="Gem1" type="TextureRect" parent="."]
 margin_left = 347.5
@@ -36,10 +43,14 @@ margin_right = 397.5
 margin_bottom = 247.5
 rect_min_size = Vector2( 50, 50 )
 rect_pivot_offset = Vector2( 25, 25 )
+mouse_filter = 0
+mouse_default_cursor_shape = 6
 texture = ExtResource( 3 )
 expand = true
 stretch_mode = 6
+script = ExtResource( 8 )
 __meta__ = {
+"_edit_use_anchors_": false,
 "_editor_description_": "gem"
 }
 
@@ -50,9 +61,12 @@ margin_right = 452.5
 margin_bottom = 247.5
 rect_min_size = Vector2( 50, 50 )
 rect_pivot_offset = Vector2( 25, 25 )
+mouse_filter = 0
+mouse_default_cursor_shape = 6
 texture = ExtResource( 5 )
 expand = true
 stretch_mode = 6
+script = ExtResource( 8 )
 __meta__ = {
 "_edit_use_anchors_": false,
 "_editor_description_": "gem"
@@ -65,10 +79,14 @@ margin_right = 397.5
 margin_bottom = 302.5
 rect_min_size = Vector2( 50, 50 )
 rect_pivot_offset = Vector2( 25, 25 )
-texture = ExtResource( 6 )
+mouse_filter = 0
+mouse_default_cursor_shape = 6
+texture = ExtResource( 4 )
 expand = true
 stretch_mode = 6
+script = ExtResource( 8 )
 __meta__ = {
+"_edit_use_anchors_": false,
 "_editor_description_": "gem"
 }
 
@@ -79,9 +97,30 @@ margin_right = 452.5
 margin_bottom = 302.5
 rect_min_size = Vector2( 50, 50 )
 rect_pivot_offset = Vector2( 25, 25 )
-texture = ExtResource( 4 )
+mouse_filter = 0
+mouse_default_cursor_shape = 6
+texture = ExtResource( 6 )
 expand = true
 stretch_mode = 6
+script = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": "gem"
+}
+
+[node name="Gem5" type="TextureRect" parent="."]
+margin_left = 402.5
+margin_top = 252.5
+margin_right = 452.5
+margin_bottom = 302.5
+rect_min_size = Vector2( 50, 50 )
+rect_pivot_offset = Vector2( 25, 25 )
+mouse_filter = 0
+mouse_default_cursor_shape = 6
+texture = ExtResource( 9 )
+expand = true
+stretch_mode = 6
+script = ExtResource( 8 )
 __meta__ = {
 "_edit_use_anchors_": false,
 "_editor_description_": "gem"
@@ -93,6 +132,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 rect_pivot_offset = Vector2( 400, 0 )
+mouse_filter = 1
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource( 7 )

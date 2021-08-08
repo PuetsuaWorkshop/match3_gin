@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/actionTrack.mp3-d79bf7ecf48644ca05197fbfbe21cb33.mp3str"
+
+[deps]
+
+source_file="res://ui/audio/actionTrack.mp3"
+dest_files=[ "res://.import/actionTrack.mp3-d79bf7ecf48644ca05197fbfbe21cb33.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
