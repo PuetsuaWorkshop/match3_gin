@@ -2,7 +2,7 @@
 
 Shield: [![CC BY-NC 4.0][cc-shield]][cc]
 
-This work is licensed under a
+Character art and images are licensed under a
 [Creative Commons Attribution-NonCommercial 4.0 International License][cc].
 
 [![CC BY-NC 4.0][cc-image]][cc]
