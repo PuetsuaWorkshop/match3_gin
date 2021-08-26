@@ -74,7 +74,7 @@ func _process(delta):
 		elif rand == 1:
 			_talk("I guess you might be curious about where I am. I'm in a coffee shop!", "talk")
 		elif rand == 2:
-			_talk("I have a shark friend who really likes mobile game. Too bad I'm a console gamer.", "talk")
+			_talk("I have a shark friend who really likes mobile games. Too bad I'm a console gamer.", "talk")
 		elif rand == 3:
 			_talk("I heard that game design is very hard. You have to learn so much stuff to create a good game.", "talk")
 
@@ -111,7 +111,7 @@ func _on_Match3_scored(score):
 	
 	if talk_queue.size() > 5:
 		talk_queue.clear()
-		_talk("Wait. You're already playing? Well, I don't want to go through the explaination either. It's just a typical match-3 game anyway.", "confused")
+		_talk("Wait. You're already playing? Looks like you know what you're doing.", "confused")
 	else:
 		if current_score > target_score and !target_reached:
 			target_reached = true
@@ -128,7 +128,7 @@ func _on_Match3_scored(score):
 			# win
 			target_score = pow(current_score, 0.98)
 			target_score = target_score - target_score % 100
-			_talk("Congratulation! You reached the target score this round! Let's try the next target score.", "happy")
+			_talk("Congratulations! You reached the target score this round! Let's try for the next target score.", "happy")
 		else:
 			# lose
 			_talk("That's fine! I know it's hard to reach that score at this point. You can try it again if you want!", "happy")

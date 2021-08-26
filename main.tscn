@@ -88,8 +88,8 @@ margin_bottom = -15.0
 custom_fonts/bold_font = ExtResource( 6 )
 custom_fonts/normal_font = ExtResource( 5 )
 bbcode_enabled = true
-bbcode_text = "This is my game playing the lol games. [b]test![/b]"
-text = "This is my game playing the lol games. test!"
+bbcode_text = "Partialgeek has infiltrated this game. [b]beware![/b]"
+text = "Partialgeek has infiltrated this game. beware!"
 scroll_active = false
 script = ExtResource( 3 )
 __meta__ = {
@@ -97,7 +97,7 @@ __meta__ = {
 }
 speed = 30.0
 acceleration = 1.0
-message = "This is my game playing the lol games. [b]test![/b]"
+message = "Partialgeek has infiltrated this game. [b]beware![/b]"
 autoscroll = false
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
