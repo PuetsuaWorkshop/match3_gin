@@ -10,12 +10,6 @@ extends Tween
 func _ready():
 	pass # Replace with function body.
 
-func _get_full_path(path_name):
-	var path_string = ""
-	for i in range(path_name.get_name_count()):
-		path_string += path_name.get_name(i) + "/"
-	return path_string.trim_suffix("/")
-
 func slide_gem_left(gem):
 	var x_pos = gem.rect_position.x
 	interpolate_property(gem, "rect_position:x" , x_pos, x_pos - 55, 0.3)
