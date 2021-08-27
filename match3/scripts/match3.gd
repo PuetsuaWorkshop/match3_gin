@@ -1,10 +1,12 @@
 extends Control
 
+onready var animate = $AnimationPlayer
+
 export var width : int = 10
 export var height : int = 8
 export var selected_material : Material
 
-signal moved_gem
+signal moved_gem(gem_a, gem_b)
 signal scored(score)
 
 var rng = RandomNumberGenerator.new()
@@ -27,8 +29,9 @@ func mouse_pressed_gem(gem):
 		_unselect_gem()
 		return
 		
+	#Edit, the gems are now passed entirely and not just the positions
 	if is_selected_gem():
-		_try_gem_switch(gem.field_pos, selected_gem.field_pos)
+		_try_gem_switch(gem, selected_gem)
 	else:
 		_select_gem(gem)
 
@@ -44,6 +47,9 @@ func _gui_input(event):
 				
 
 func _ready():
+	if is_connected("moved_gem", $AnimationPlayer, "animate_switch"):
+		print("Connected")
+	#connect("moved_gem", $Field/AnimationPlayer, "animate_switch")
 	rng.randomize() # use time as seed.
 	
 	# Collect gem instances
@@ -79,21 +85,29 @@ func _unselect_gem():
 	selected_gem = null
 	
 
-func _try_gem_switch(gem_pos_a, gem_pos_b):
+func _try_gem_switch(gem_a, gem_b):
+	var gem_pos_a = gem_a.field_pos
+	var gem_pos_b = gem_b.field_pos
 	var dx : int = abs(gem_pos_a.x - gem_pos_b.x)
 	var dy : int = abs(gem_pos_a.y - gem_pos_b.y)
 	
 	if dx == 1 and dy == 0:
-		_gem_switch(gem_pos_a, gem_pos_b)
+		_gem_switch(gem_a, gem_b)
 	elif dx == 0 and dy == 1:
-		_gem_switch(gem_pos_a, gem_pos_b)
+		_gem_switch(gem_a, gem_b)
 	else:
 		_unselect_gem()
 
 
-func _gem_switch(gem_pos_a, gem_pos_b):
+func _gem_switch(gem_a, gem_b):
 	can_select = false
-	emit_signal("moved_gem")
+	
+	var gem_pos_a = gem_a.field_pos
+	var gem_pos_b = gem_b.field_pos
+	
+	if is_connected("moved_gem", $AnimationPlayer, "animate_switch"):
+		print("Emit moved_gem")
+	emit_signal("moved_gem", gem_a, gem_b)
 	
 	var delay = 0.5
 	var idx_a = gem_pos_a.y*width + gem_pos_a.x
@@ -104,7 +118,7 @@ func _gem_switch(gem_pos_a, gem_pos_b):
 	gem_field[idx_b] = temp
 	
 	_unselect_gem()
-	_display_field()
+	#_display_field()
 	
 	yield(get_tree().create_timer(delay), "timeout")
 	
@@ -134,6 +148,8 @@ func _gem_switch(gem_pos_a, gem_pos_b):
 
 
 func generate_field():
+	if is_connected("moved_gem", $AnimationPlayer, "animate_switch"):
+		print("Connected Still")
 	var dup_x = 0
 	
 	print("generate_field")

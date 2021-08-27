@@ -148,7 +148,7 @@ func _on_Match3_scored(score):
 		_update_info()
 
 
-func _on_Match3_moved_gem():
+func _on_Match3_moved_gem(gem_a, gem_b):
 	move_count += 1
 	
 	if max_move_count - move_count == 3:

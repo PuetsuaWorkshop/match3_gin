@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://match3/scripts/match3.gd" type="Script" id=1]
 [ext_resource path="res://ui/sprites/grey_panel.png" type="Texture" id=2]
@@ -9,6 +9,8 @@
 [ext_resource path="res://match3/scripts/field.gd" type="Script" id=7]
 [ext_resource path="res://match3/scripts/gem.gd" type="Script" id=8]
 [ext_resource path="res://match3/sprites/Gem Type1 Black.png" type="Texture" id=9]
+[ext_resource path="res://match3/GemAnimationPlayer.gd" type="Script" id=10]
+[ext_resource path="res://match3/GemTween.gd" type="Script" id=11]
 
 [sub_resource type="CanvasItemMaterial" id=1]
 blend_mode = 1
@@ -141,3 +143,11 @@ __meta__ = {
 }
 columns = 2
 alignment = 4
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+script = ExtResource( 10 )
+
+[node name="Tween" type="Tween" parent="."]
+script = ExtResource( 11 )
+
+[connection signal="moved_gem" from="." to="Tween" method="animate_switch"]
