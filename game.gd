@@ -74,7 +74,7 @@ func _process(delta):
 		elif rand == 1:
 			_talk("I guess you might be curious about where I am. I'm in a coffee shop!", "talk")
 		elif rand == 2:
-			_talk("I have a shark friend who really like mobile game. Too bad I'm a console gamer.", "talk")
+			_talk("I have a shark friend who really likes mobile games. Too bad I'm a console gamer.", "talk")
 		elif rand == 3:
 			_talk("I heard that game design is very hard. You have to learn so much stuff to create a good game.", "talk")
 
@@ -111,7 +111,7 @@ func _on_Match3_scored(score):
 	
 	if talk_queue.size() > 5:
 		talk_queue.clear()
-		_talk("Wait. You're already playing? Well, I don't want to explain this game neither. It's just a typical match-3 game anyway.", "confused")
+		_talk("Wait. You're already playing? Looks like you know what you're doing.", "confused")
 	else:
 		if current_score > target_score and !target_reached:
 			target_reached = true
@@ -119,7 +119,7 @@ func _on_Match3_scored(score):
 		elif last_score > 1000:
 			_talk("Over 1000 in one move? Now that's a strategic move.", "talk")
 		elif last_score > 700:
-			_talk("Over 700! I don't have that luck to score that much in one move.", "talk")
+			_talk("Over 700! I don't have the luck to score that much in one move.", "talk")
 		elif last_score > 500:
 			_talk("Nice move!", "talk")
 	
@@ -128,7 +128,7 @@ func _on_Match3_scored(score):
 			# win
 			target_score = pow(current_score, 0.98)
 			target_score = target_score - target_score % 100
-			_talk("Congratulation! You reached the target score in this round! Let's try next target score.", "happy")
+			_talk("Congratulations! You reached the target score this round! Let's try for the next target score.", "happy")
 		else:
 			# lose
 			_talk("That's fine! I know it's hard to reach that score at this point. You can try it again if you want!", "happy")
@@ -148,14 +148,14 @@ func _on_Match3_scored(score):
 		_update_info()
 
 
-func _on_Match3_moved_gem():
+func _on_Match3_moved_gem(gem_a, gem_b):
 	move_count += 1
 	
 	if max_move_count - move_count == 3:
 		if target_score > current_score:
 			_talk("Three moves remaining, it's your last chance to reach target score.", "talk")
 		else:
-			_talk("Three moves remaining! Try to get as much score as possible!", "happy")
+			_talk("Three moves remaining! Try to get as many points as possible!", "happy")
 	
 	_update_info()
 
